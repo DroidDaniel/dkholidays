@@ -1,0 +1,26 @@
+<?php
+    $to = 'your-email@example.com'; // Change this to your email
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $subject = $_POST["subject"];
+    $message = $_POST["message"];
+
+    $headers = 'MIME-Version: 1.0' . "\r\n";
+    $headers .= "From: " . $email . "\r\n";
+    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+    $body = '<table style="width:100%">
+        <tr><td><strong>Name:</strong> '.$name.'</td></tr>
+        <tr><td><strong>Email:</strong> '.$email.'</td></tr>
+        <tr><td><strong>Subject:</strong> '.$subject.'</td></tr>
+        <tr><td><strong>Message:</strong> '.$message.'</td></tr>
+    </table>';
+
+    if (@mail($to, $subject, $body, $headers))
+    {
+        echo 'success';
+    }else{
+        echo 'failed';
+    }
+?>
+
